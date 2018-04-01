@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <script src="{% static 'data_query/js/jquery-3.1.0.js' %}"></script>
+    <script src="{% static 'data_query/js/jquery.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'data_query/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'data_query/css/bootstrap.css' %}">
+{#    <link rel="stylesheet" href="{% static 'data_query/css/bootstrap-datetimepicker.css' %}">#}
+    <link rel="stylesheet" href="{% static 'data_query/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'data_query/css/shijian.css' %}">
+    <link rel="stylesheet" href="{% static 'data_query/css/bootstrap-theme.css' %}">
+    <script src="{% static 'data_query/js/bootstrap.js' %}"></script>
+    <script src="{% static 'data_query/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'data_query/js/shijian.js' %}"></script>
+    <title>首页</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="header">
+            <div class="header-left"><span>运维管理平台</span></div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+              <div class="list-left">
+                  <ul class="list-group">
+                    <a href="{% url 'dataquery' %}"><li class="list-group-item">数据查询</li></a>
+                  </ul>
+              </div>
+          </div>
+          <div class="col-md-10">
+            {% block main %}
+            {% endblock main %}
+
+          </div>
+        </div>
+    </div>
+<script type="text/javascript">
+$("input[name='quanxuan']").click(function(){
+		//判断当前点击的复选框处于什么状态$(this).is(":checked") 返回的是布尔类型
+		if($(this).is(":checked")){
+			$("input[name='select']").prop("checked",true);
+		}else{
+			$("input[name='select']").prop("checked",false);
+		}
+	});
+
+$("#input3").shijian({
+	y:-10,//当前年份+10
+	Hour:true,//是否显示小时
+ 	Minute:true,//是否显分钟
+});
+$("#input4").shijian({
+	y:-10,//当前年份+10
+	Hour:true,//是否显示小时
+ 	Minute:true,//是否显分钟
+});
+
+$("#btn-select").click(function(){
+
+    if($("input[name='select']").is(":checked")){
+        var stime = new Date(($("#input3").val()).replace(/-/g,"/"));
+        var etime = new Date(($("#input4").val()).replace(/-/g,"/"));
+
+        if(stime>etime){
+            alert("起始时间不能大于结束时间");
+            return false;
+        }
+        else if(stime =="Invalid Date" || etime=="Invalid Date"){
+            alert("时间范围不能为空");
+            return false;
+        }
+
+    }
+    else {
+        alert("请选择条件！");
+        return false
+    }
+
+});
+
+
+</script>
+
+</body>
+</html>

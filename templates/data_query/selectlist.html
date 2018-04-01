@@ -1,0 +1,21 @@
+{% extends "data_query/index.html" %}
+{% block main %}
+    <div class="select-result">
+        <table class="select-table" border="1">
+            <tr>
+            <th>险种</th>
+            <th>数量</th>
+            <th>单价</th>
+            <th>时间</th>
+            </tr>
+        {% for ddd in data_list %}
+          <tr>
+            <td>{{ ddd.category }}</td>
+            <td>{{ ddd.count }}</td>
+            <td>{{ ddd.money }}</td>
+            <td>{{ ddd.time }}</td>
+          </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock main %}

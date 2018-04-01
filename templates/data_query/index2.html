@@ -1,0 +1,32 @@
+{% extends "data_query/index.html" %}
+{% block main %}
+<div class="title"><h3>数据查询</h3></div>
+  <div class="select">
+    <h4>选择条件查询</h4>
+
+    <form action="selectlist" class="selectlist" method="post">
+        <div class="check-select">
+            <label class="all">
+                <input type="checkbox" name="quanxuan" value=""> 选择全部
+            </label><br>
+
+
+            {% csrf_token %}
+            {% for xxx in sql_list %}
+                <label>
+                    <input type="checkbox" id="select" name="select" value="{{ xxx.category }}">&nbsp;{{ xxx.category }}&nbsp;&nbsp;&nbsp;
+                </label>
+            {% endfor %}
+        </div>
+        <br>
+        <div class="time-select">
+            开始时间：<input type="text"  id="input3" name="starttime" value=""/>
+            结束时间：<input type="text"  id="input4" name="endtime" value=""/>
+        </div><br>
+
+        <button type="submit" id="btn-select" style="width:120px;" class="btn btn-success" title="查询时间以查询项数量为准 ">查看已选数据
+        </button>
+
+    </form><br>
+  </div>
+{% endblock main %}

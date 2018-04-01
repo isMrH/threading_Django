@@ -1,0 +1,49 @@
+.header{
+    background-color: #2e6da4;
+    height: 50px;
+    width:100%;
+    margin-bottom: 10px;
+}
+
+.header-left{
+    width: 30%;
+    float:left;
+}
+.header-left span{
+    font-size: 25px;
+    padding-left:30px;
+    color: #ffffff;
+    line-height: 50px;
+}
+.header-right{
+    width: 70%;
+    float:right;
+}
+
+
+
+.title h3{
+    font-size: 25px;
+    margin-left:40%;
+}
+.check-select label{
+    font-size: 15px;
+    padding:16px;
+}
+.select-table{
+    width:800px;
+}
+.select-table th{
+    padding:15px;
+}
+.time-select{
+    font-size: 14px;
+}
+.select-table td{
+    padding:20px;
+}
+
+.list-left ul a:link{
+    font-size: 17px;
+    text-decoration:none;
+}
